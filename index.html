@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flight Reservation Form</title>
+    <title>Flight Reservation Form - Saudi Arabia to India</title>
     <style>
         * {
             margin: 0;
@@ -268,19 +268,6 @@
             border-top: 1px dashed #ddd;
         }
         
-        .passenger-list {
-            margin-top: 10px;
-        }
-        
-        .passenger-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            padding: 5px;
-            background-color: #f9f9f9;
-            border-radius: 4px;
-        }
-        
         .footer {
             text-align: center;
             margin-top: 20px;
@@ -413,6 +400,23 @@
             border-radius: 4px;
         }
         
+        .contact-details {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            display: none;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .contact-item {
+            text-align: center;
+        }
+        
         /* Print styles - only show the itinerary */
         @media print {
             body * {
@@ -444,11 +448,11 @@
                 margin-bottom: 15px;
             }
             
-            .reservation-codes, .airline-info, .flight-info {
+            .reservation-codes, .airline-info, .flight-info, .contact-info {
                 flex-direction: column;
             }
             
-            .reservation-codes > div, .airline-info > div, .flight-info > div {
+            .reservation-codes > div, .airline-info > div, .flight-info > div, .contact-info > div {
                 margin-bottom: 10px;
             }
             
@@ -471,7 +475,7 @@
     <div class="container no-print">
         <header>
             <h1>Flight Reservation System</h1>
-            <p class="subtitle">Book your flight and generate a printable itinerary</p>
+            <p class="subtitle">Book your flight from Saudi Arabia to India and generate a printable itinerary</p>
         </header>
         
         <div class="card">
@@ -486,10 +490,27 @@
                                 <label for="departure">Departure City (Saudi Arabia)</label>
                                 <select id="departure" required>
                                     <option value="">Select departure city</option>
-                                    <option value="JED">Jeddah (JED)</option>
-                                    <option value="MED">Medina (MED)</option>
-                                    <option value="DMM">Dammam (DMM)</option>
-                                    <option value="RUH">Riyadh (RUH)</option>
+                                    <option value="JED">Jeddah - King Abdulaziz (JED)</option>
+                                    <option value="RUH">Riyadh - King Khalid (RUH)</option>
+                                    <option value="DMM">Dammam - King Fahd (DMM)</option>
+                                    <option value="MED">Medina - Prince Mohammad Bin Abdulaziz (MED)</option>
+                                    <option value="AHB">Abha - Abha Regional (AHB)</option>
+                                    <option value="TIF">Taif - Taif Regional (TIF)</option>
+                                    <option value="TUU">Tabuk - Tabuk Regional (TUU)</option>
+                                    <option value="ELQ">Buraidah - Prince Naif Bin Abdulaziz (ELQ)</option>
+                                    <option value="URY">Gurayat - Gurayat Regional (URY)</option>
+                                    <option value="HOF">Al Ahsa - Al Ahsa Regional (HOF)</option>
+                                    <option value="AJF">Al Jouf - Al Jouf Regional (AJF)</option>
+                                    <option value="RAH">Rafha - Rafha Regional (RAH)</option>
+                                    <option value="EAM">Najran - Najran Regional (EAM)</option>
+                                    <option value="ABT">Al Baha - Al Baha Regional (ABT)</option>
+                                    <option value="HAS">Ha'il - Ha'il Regional (HAS)</option>
+                                    <option value="YNB">Yanbu - Yanbu Regional (YNB)</option>
+                                    <option value="BHH">Bisha - Bisha Regional (BHH)</option>
+                                    <option value="AQI">Qaisumah - Qaisumah Regional (AQI)</option>
+                                    <option value="SHW">Sharurah - Sharurah Regional (SHW)</option>
+                                    <option value="RAE">Arar - Arar Regional (RAE)</option>
+                                    <option value="WAE">Wadi Al Dawasir - Wadi Al Dawasir Regional (WAE)</option>
                                 </select>
                             </div>
                         </div>
@@ -498,13 +519,27 @@
                                 <label for="arrival">Arrival City (India)</label>
                                 <select id="arrival" required>
                                     <option value="">Select arrival city</option>
-                                    <option value="BOM">Mumbai (BOM)</option>
-                                    <option value="DEL">New Delhi (DEL)</option>
-                                    <option value="LKO">Lucknow (LKO)</option>
-                                    <option value="MAA">Chennai (MAA)</option>
-                                    <option value="COK">Kochi (COK)</option>
-                                    <option value="HYD">Hyderabad (HYD)</option>
-                                    <option value="AMD">Ahmedabad (AMD)</option>
+                                    <option value="DEL">Delhi - Indira Gandhi International (DEL)</option>
+                                    <option value="BOM">Mumbai - Chhatrapati Shivaji Maharaj (BOM)</option>
+                                    <option value="MAA">Chennai - Chennai International (MAA)</option>
+                                    <option value="BLR">Bengaluru - Kempegowda International (BLR)</option>
+                                    <option value="HYD">Hyderabad - Rajiv Gandhi International (HYD)</option>
+                                    <option value="CCU">Kolkata - Netaji Subhas Chandra Bose (CCU)</option>
+                                    <option value="COK">Kochi - Cochin International (COK)</option>
+                                    <option value="GOI">Goa - Dabolim (GOI)</option>
+                                    <option value="AMD">Ahmedabad - Sardar Vallabhbhai Patel (AMD)</option>
+                                    <option value="TRV">Thiruvananthapuram - Trivandrum International (TRV)</option>
+                                    <option value="PNQ">Pune - Pune Airport (PNQ)</option>
+                                    <option value="LKO">Lucknow - Chaudhary Charan Singh (LKO)</option>
+                                    <option value="GAU">Guwahati - Lokpriya Gopinath Bordoloi (GAU)</option>
+                                    <option value="IXC">Chandigarh - Chandigarh International (IXC)</option>
+                                    <option value="IXB">Bagdogra - Bagdogra Airport (IXB)</option>
+                                    <option value="IXE">Mangalore - Mangalore International (IXE)</option>
+                                    <option value="CCJ">Kozhikode - Calicut International (CCJ)</option>
+                                    <option value="VGA">Vijayawada - Vijayawada Airport (VGA)</option>
+                                    <option value="BBI">Bhubaneswar - Biju Patnaik International (BBI)</option>
+                                    <option value="PAT">Patna - Jay Prakash Narayan (PAT)</option>
+                                    <option value="JAI">Jaipur - Jaipur International (JAI)</option>
                                 </select>
                             </div>
                         </div>
@@ -518,6 +553,9 @@
                                     <option value="">Select airline</option>
                                     <option value="SV">Saudi Airlines (SV)</option>
                                     <option value="AI">Air India (AI)</option>
+                                    <option value="IX">Air India Express (IX)</option>
+                                    <option value="6E">IndiGo (6E)</option>
+                                    <option value="SG">SpiceJet (SG)</option>
                                 </select>
                             </div>
                         </div>
@@ -607,6 +645,21 @@
                         </div>
                     </div>
                     
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="customerEmail">Customer Email (Optional)</label>
+                                <input type="email" id="customerEmail" placeholder="Enter customer email">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="customerMobile">Customer Mobile (Optional)</label>
+                                <input type="tel" id="customerMobile" placeholder="Enter customer mobile number">
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="button-group">
                         <button type="button" class="btn" id="generateBtn">Generate Itinerary</button>
                         <button type="reset" class="btn btn-reset" id="resetBtn">Reset Form</button>
@@ -618,7 +671,7 @@
         
     <div class="itinerary-preview" id="itineraryPreview">
         <div class="preview-header">
-            <div class="trip-title" id="previewTripTitle">TRIP TO MUMBAI, INDIA</div>
+            <div class="trip-title" id="previewTripTitle">TRIP TO DELHI, INDIA</div>
             <div class="passenger-info">PREPARED FOR<br><strong id="previewPassengerName">ANSARI/HINDA AKIF</strong></div>
         </div>
         
@@ -670,10 +723,10 @@
                     <div style="text-align: center; width: 10%; padding-top: 20px;">→</div>
                     
                     <div class="arrival">
-                        <div class="airport-code" id="previewArrivalCode">BOM</div>
-                        <div id="previewArrivalCity">MUMBAI, INDIA</div>
+                        <div class="airport-code" id="previewArrivalCode">DEL</div>
+                        <div id="previewArrivalCity">DELHI, INDIA</div>
                         <div class="time">Arriving At: <span id="previewArrivalTime">12:30</span></div>
-                        <div>Terminal: TERMINAL 2</div>
+                        <div>Terminal: TERMINAL 3</div>
                     </div>
                 </div>
                 
@@ -708,6 +761,20 @@
             </div>
         </div>
         
+        <div class="contact-details" id="previewContactDetails">
+            <div class="info-label">Customer Contact Details:</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="info-label">Email:</div>
+                    <div class="info-value" id="previewCustomerEmail">customer@example.com</div>
+                </div>
+                <div class="contact-item">
+                    <div class="info-label">Mobile:</div>
+                    <div class="info-value" id="previewCustomerMobile">+966 123 456 7890</div>
+                </div>
+            </div>
+        </div>
+        
         <div class="footer">
             <div class="company-logo-container">
                 <img id="previewFooterCompanyLogo" src="" alt="ALMATAR.COM Logo" class="company-logo">
@@ -738,6 +805,7 @@
             const companyLogoPreview = document.getElementById('companyLogoPreview');
             const passengerContainer = document.getElementById('passengerContainer');
             const previewPassengerList = document.getElementById('previewPassengerList');
+            const previewContactDetails = document.getElementById('previewContactDetails');
             
             let uploadedLogo = null;
             let uploadedCompanyLogo = null;
@@ -750,6 +818,15 @@
                 },
                 'AI': {
                     name: 'AIR INDIA'
+                },
+                'IX': {
+                    name: 'AIR INDIA EXPRESS'
+                },
+                '6E': {
+                    name: 'INDIGO'
+                },
+                'SG': {
+                    name: 'SPICEJET'
                 }
             };
             
@@ -763,50 +840,137 @@
             const airports = {
                 // Saudi Arabia departure airports
                 'JED': { city: 'JEDDAH, SAUDI ARABIA', country: 'SAUDI ARABIA' },
-                'MED': { city: 'MEDINA, SAUDI ARABIA', country: 'SAUDI ARABIA' },
-                'DMM': { city: 'DAMMAM, SAUDI ARABIA', country: 'SAUDI ARABIA' },
                 'RUH': { city: 'RIYADH, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'DMM': { city: 'DAMMAM, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'MED': { city: 'MEDINA, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'AHB': { city: 'ABHA, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'TIF': { city: 'TAIF, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'TUU': { city: 'TABUK, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'ELQ': { city: 'BURAIDAH, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'URY': { city: 'GURAYAT, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'HOF': { city: 'AL AHSA, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'AJF': { city: 'AL JOUF, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'RAH': { city: 'RAFHA, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'EAM': { city: 'NAJRAN, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'ABT': { city: 'AL BAHA, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'HAS': { city: 'HAIL, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'YNB': { city: 'YANBU, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'BHH': { city: 'BISHA, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'AQI': { city: 'QAISUMAH, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'SHW': { city: 'SHARURAH, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'RAE': { city: 'ARAR, SAUDI ARABIA', country: 'SAUDI ARABIA' },
+                'WAE': { city: 'WADI AL DAWASIR, SAUDI ARABIA', country: 'SAUDI ARABIA' },
                 
                 // India arrival airports
+                'DEL': { city: 'DELHI, INDIA', country: 'INDIA' },
                 'BOM': { city: 'MUMBAI, INDIA', country: 'INDIA' },
-                'DEL': { city: 'NEW DELHI, INDIA', country: 'INDIA' },
-                'LKO': { city: 'LUCKNOW, INDIA', country: 'INDIA' },
                 'MAA': { city: 'CHENNAI, INDIA', country: 'INDIA' },
-                'COK': { city: 'KOCHI, INDIA', country: 'INDIA' },
+                'BLR': { city: 'BENGALURU, INDIA', country: 'INDIA' },
                 'HYD': { city: 'HYDERABAD, INDIA', country: 'INDIA' },
-                'AMD': { city: 'AHMEDABAD, INDIA', country: 'INDIA' }
+                'CCU': { city: 'KOLKATA, INDIA', country: 'INDIA' },
+                'COK': { city: 'KOCHI, INDIA', country: 'INDIA' },
+                'GOI': { city: 'GOA, INDIA', country: 'INDIA' },
+                'AMD': { city: 'AHMEDABAD, INDIA', country: 'INDIA' },
+                'TRV': { city: 'THIRUVANANTHAPURAM, INDIA', country: 'INDIA' },
+                'PNQ': { city: 'PUNE, INDIA', country: 'INDIA' },
+                'LKO': { city: 'LUCKNOW, INDIA', country: 'INDIA' },
+                'GAU': { city: 'GUWAHATI, INDIA', country: 'INDIA' },
+                'IXC': { city: 'CHANDIGARH, INDIA', country: 'INDIA' },
+                'IXB': { city: 'BAGDOGRA, INDIA', country: 'INDIA' },
+                'IXE': { city: 'MANGALORE, INDIA', country: 'INDIA' },
+                'CCJ': { city: 'KOZHIKODE, INDIA', country: 'INDIA' },
+                'VGA': { city: 'VIJAYAWADA, INDIA', country: 'INDIA' },
+                'BBI': { city: 'BHUBANESWAR, INDIA', country: 'INDIA' },
+                'PAT': { city: 'PATNA, INDIA', country: 'INDIA' },
+                'JAI': { city: 'JAIPUR, INDIA', country: 'INDIA' }
             };
             
-            // Distances between airports (in miles)
+            // Distances between airports (in miles) - Saudi to India
             const distances = {
-                'JED-BOM': 1500,
-                'JED-DEL': 2000,
-                'JED-LKO': 2100,
-                'JED-MAA': 1800,
-                'JED-COK': 1900,
-                'JED-HYD': 1700,
-                'JED-AMD': 1600,
-                'MED-BOM': 1600,
-                'MED-DEL': 2100,
-                'MED-LKO': 2200,
-                'MED-MAA': 1900,
-                'MED-COK': 2000,
-                'MED-HYD': 1800,
-                'MED-AMD': 1700,
-                'DMM-BOM': 1400,
-                'DMM-DEL': 1900,
-                'DMM-LKO': 2000,
-                'DMM-MAA': 1700,
-                'DMM-COK': 1800,
-                'DMM-HYD': 1600,
-                'DMM-AMD': 1500,
-                'RUH-BOM': 1450,
-                'RUH-DEL': 1950,
+                'JED-DEL': 2200,
+                'JED-BOM': 2100,
+                'JED-MAA': 2300,
+                'JED-BLR': 2250,
+                'JED-HYD': 2200,
+                'JED-CCU': 2400,
+                'JED-COK': 2350,
+                'JED-GOI': 2150,
+                'JED-AMD': 2050,
+                'JED-TRV': 2400,
+                'JED-PNQ': 2100,
+                'JED-LKO': 2250,
+                'JED-GAU': 2500,
+                'JED-IXC': 2200,
+                'JED-IXB': 2450,
+                'JED-IXE': 2300,
+                'JED-CCJ': 2350,
+                'JED-VGA': 2250,
+                'JED-BBI': 2350,
+                'JED-PAT': 2300,
+                'JED-JAI': 2150,
+                'RUH-DEL': 2000,
+                'RUH-BOM': 1900,
+                'RUH-MAA': 2100,
+                'RUH-BLR': 2050,
+                'RUH-HYD': 2000,
+                'RUH-CCU': 2200,
+                'RUH-COK': 2150,
+                'RUH-GOI': 1950,
+                'RUH-AMD': 1850,
+                'RUH-TRV': 2200,
+                'RUH-PNQ': 1900,
                 'RUH-LKO': 2050,
-                'RUH-MAA': 1750,
-                'RUH-COK': 1850,
-                'RUH-HYD': 1650,
-                'RUH-AMD': 1550
+                'RUH-GAU': 2300,
+                'RUH-IXC': 2000,
+                'RUH-IXB': 2250,
+                'RUH-IXE': 2100,
+                'RUH-CCJ': 2150,
+                'RUH-VGA': 2050,
+                'RUH-BBI': 2150,
+                'RUH-PAT': 2100,
+                'RUH-JAI': 1950,
+                'DMM-DEL': 1850,
+                'DMM-BOM': 1750,
+                'DMM-MAA': 1950,
+                'DMM-BLR': 1900,
+                'DMM-HYD': 1850,
+                'DMM-CCU': 2050,
+                'DMM-COK': 2000,
+                'DMM-GOI': 1800,
+                'DMM-AMD': 1700,
+                'DMM-TRV': 2050,
+                'DMM-PNQ': 1750,
+                'DMM-LKO': 1900,
+                'DMM-GAU': 2150,
+                'DMM-IXC': 1850,
+                'DMM-IXB': 2100,
+                'DMM-IXE': 1950,
+                'DMM-CCJ': 2000,
+                'DMM-VGA': 1900,
+                'DMM-BBI': 2000,
+                'DMM-PAT': 1950,
+                'DMM-JAI': 1800,
+                'MED-DEL': 2100,
+                'MED-BOM': 2000,
+                'MED-MAA': 2200,
+                'MED-BLR': 2150,
+                'MED-HYD': 2100,
+                'MED-CCU': 2300,
+                'MED-COK': 2250,
+                'MED-GOI': 2050,
+                'MED-AMD': 1950,
+                'MED-TRV': 2300,
+                'MED-PNQ': 2000,
+                'MED-LKO': 2150,
+                'MED-GAU': 2400,
+                'MED-IXC': 2100,
+                'MED-IXB': 2350,
+                'MED-IXE': 2200,
+                'MED-CCJ': 2250,
+                'MED-VGA': 2150,
+                'MED-BBI': 2250,
+                'MED-PAT': 2200,
+                'MED-JAI': 2050
             };
             
             // Add passenger function
@@ -920,6 +1084,7 @@
             }
             
             // Calculate flight duration considering time zone difference
+            // India is 2.5 hours ahead of Saudi Arabia
             function calculateDuration(depDate, depTime, arrDate, arrTime) {
                 // Create date objects for departure and arrival
                 const depDateTime = new Date(`${depDate}T${depTime}:00`);
@@ -957,6 +1122,8 @@
                 const departureTime = document.getElementById('departureTime').value;
                 const arrivalDate = document.getElementById('arrivalDate').value;
                 const arrivalTime = document.getElementById('arrivalTime').value;
+                const customerEmail = document.getElementById('customerEmail').value;
+                const customerMobile = document.getElementById('customerMobile').value;
                 
                 // Get passenger details
                 const passengerEntries = document.querySelectorAll('.passenger-entry');
@@ -1059,6 +1226,25 @@
                     `;
                     previewPassengerList.appendChild(passengerItem);
                 });
+                
+                // Update contact details if provided
+                if (customerEmail || customerMobile) {
+                    if (customerEmail) {
+                        document.getElementById('previewCustomerEmail').textContent = customerEmail;
+                    } else {
+                        document.getElementById('previewCustomerEmail').textContent = 'Not provided';
+                    }
+                    
+                    if (customerMobile) {
+                        document.getElementById('previewCustomerMobile').textContent = customerMobile;
+                    } else {
+                        document.getElementById('previewCustomerMobile').textContent = 'Not provided';
+                    }
+                    
+                    previewContactDetails.style.display = 'block';
+                } else {
+                    previewContactDetails.style.display = 'none';
+                }
                 
                 // Show preview
                 itineraryPreview.style.display = 'block';
