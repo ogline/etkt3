@@ -551,7 +551,10 @@
                                 <label for="airline">Airline</label>
                                 <select id="airline" required>
                                     <option value="">Select airline</option>
-                                    <option value="SV">Saudi Airlines (SV)</option>
+                                    <option value="SV">Saudia (SV)</option>
+                                    <option value="XY">Flynas (XY)</option>
+                                    <option value="F3">Flyadeal (F3)</option>
+                                    <option value="6S">SaudiGulf Airlines (6S)</option>
                                     <option value="AI">Air India (AI)</option>
                                     <option value="IX">Air India Express (IX)</option>
                                     <option value="6E">IndiGo (6E)</option>
@@ -672,7 +675,7 @@
     <div class="itinerary-preview" id="itineraryPreview">
         <div class="preview-header">
             <div class="trip-title" id="previewTripTitle">TRIP TO DELHI, INDIA</div>
-            <div class="passenger-info">PREPARED FOR<br><strong id="previewPassengerName">ANSARI/HINDA AKIF</strong></div>
+            <div class="passenger-info">PREPARED FOR<br><strong id="previewPassengerName">MR JOHN SMITH</strong></div>
         </div>
         
         <div class="reservation-codes">
@@ -694,7 +697,7 @@
                     <div class="airline-logo-container">
                         <img id="previewAirlineLogo" src="" alt="Airline Logo" class="airline-logo">
                         <div>
-                            <strong id="previewAirlineName">SAUDI AIRLINES</strong><br>
+                            <strong id="previewAirlineName">SAUDIA</strong><br>
                             <span id="previewFlightCode">SV 0057</span>
                         </div>
                     </div>
@@ -753,7 +756,7 @@
                     <div class="info-label">Passenger Name(s) & Ticket Numbers:</div>
                     <div class="preview-passenger-list" id="previewPassengerList">
                         <div class="preview-passenger-item">
-                            <span class="passenger-name">ANSARI/HINDA AKIF</span>
+                            <span class="passenger-name">MR JOHN SMITH</span>
                             <span class="passenger-ticket">0722999963076</span>
                         </div>
                     </div>
@@ -814,7 +817,16 @@
             // Airline data
             const airlines = {
                 'SV': {
-                    name: 'SAUDI AIRLINES'
+                    name: 'SAUDIA'
+                },
+                'XY': {
+                    name: 'FLYNAS'
+                },
+                'F3': {
+                    name: 'FLYADEAL'
+                },
+                '6S': {
+                    name: 'SAUDI GULF AIRLINES'
                 },
                 'AI': {
                     name: 'AIR INDIA'
