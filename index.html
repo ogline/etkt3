@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Reservation Form - Saudi Arabia to India</title>
     <style>
-        /* All CSS styles remain the same */
         * {
             margin: 0;
             padding: 0;
@@ -1155,19 +1154,11 @@
                         return;
                     }
                     
-                    passengers.push({ title,, ticket });
+                    passengers.push({ title, name, ticket });
                 }
                 
                 // Validate form
-                if (!departure || !arrival || !airline || !flightNumber || !departureDate || !departureTime || !arrivalDate || ! name, ticket });
-                }
-                
-                // Validate form
-                if (!departure || !arrival || !airline || !flightNumber || !departureDate || !departureTime || !arrivalDatearrivalTime) {
-                    alert('Please fill in all required fields');
-                    return;
-                }
- || !arrivalTime) {
+                if (!departure || !arrival || !airline || !flightNumber || !departureDate || !departureTime || !arrivalDate || !arrivalTime) {
                     alert('Please fill in all required fields');
                     return;
                 }
@@ -1177,39 +1168,20 @@
                 
                 // Update preview
                 document.getElementById('previewTripTitle').textContent = `TRIP TO ${airports[arrival].city}`;
+                document.getElementById('previewPassengerName').textContent = passengerNames.toUpperCase();
                 
-                // Format passenger names for display
-                const passengerNames = passengers.map(p => `${p.title} ${p.name}`).join(', ');
-                
-                // Update preview
-                document.getElementById('previewTripTitle').textContent = `TRIP TO ${airports[arrival].city}`;
-                               document.getElementById('previewPassengerName').textContent = passengerNames.toUpperCase();
-                
-                document.getElementById('pre document.getElementById('previewPassengerName').textContent = passengerNames.toUpperCase();
-                
-                document.getElementById('previewResviewReservationCode').textContent = generateRandomCode(6);
-                document.getElementById('previewAirlineCode').textContentervationCode').textContent = generateRandomCode(6);
-                document.getElementById('previewAirline = `${generateRandomCode(6)} (${airline})`;
-Code').textContent = `${generateRandomCode(6)} (${                
-                document.getElementById('previewDepartureDate').textContent = formatDate(departureairline})`;
+                document.getElementById('previewReservationCode').textContent = generateRandomCode(6);
+                document.getElementById('previewAirlineCode').textContent = `${generateRandomCode(6)} (${airline})`;
                 
                 document.getElementById('previewDepartureDate').textContent = formatDate(departureDate);
                 
-                document.getElementById('preDate);
-                
-                document.getElementById('previewDuration').textContent =viewDuration').textContent = calculateDuration(
+                document.getElementById('previewDuration').textContent = calculateDuration(
                     departureDate, departureTime, arrivalDate, arrivalTime
                 );
- calculateDuration(
-                    departureDate, departureTime, arrivalDate, arrivalTime
-                );
-                
-                // Set airline information
                 
                 // Set airline information
                 document.getElementById('previewAirlineName').textContent = airlines[airline].name;
-                document.getElementById('pre                document.getElementById('previewAirlineName').textContent = airlines[airline].name;
-                document.getElementById('previewFlightCode').textContent = `${airlineviewFlightCode').textContent = `${airline} ${flightNumber} ${flightNumber}`;
+                document.getElementById('previewFlightCode').textContent = `${airline} ${flightNumber}`;
                 
                 // Set airline logo if uploaded
                 const logoElement = document.getElementById('previewAirlineLogo');
@@ -1234,32 +1206,7 @@ Code').textContent = `${generateRandomCode(6)} (${
                 }
                 
                 document.getElementById('previewDepartureCode').textContent = departure;
-}`;
-                
-                // Set airline logo if uploaded
-                const logoElement = document.getElementById('previewAirlineLogo');
-                if (uploadedLogo) {
-                    logoElement.src = uploadedLogo;
-                    logoElement.style.display = 'block';
-                } else {
-                    logoElement.style.display = 'none';
-                }
-                
-                // Set company logo if uploaded
-                const companyLogoElement = document.getElementById('previewCompanyLogo');
-                const footerCompanyLogoElement = document.getElementById('previewFooterCompanyLogo');
-                if (uploadedCompanyLogo) {
-                    companyLogoElement.src = uploadedCompanyLogo;
-                    companyLogoElement.style.display = 'block';
-                    footerCompanyLogoElement.src = uploadedCompanyLogo;
-                    footerCompanyLogoElement.style.display = 'block';
-                } else {
-                    companyLogoElement.style.display = 'none';
-                    footerCompanyLogoElement.style.display = 'none';
-                }
-                
-                document.getElementById('previewDepartureCode').textContent = departure;
-                               document.getElementById('previewDepart document.getElementById('previewDepartureCity').textContent = airports[departure].city;
+                document.getElementById('previewDepartureCity').textContent = airports[departure].city;
                 document.getElementById('previewDepartureTime').textContent = departureTime;
                 
                 document.getElementById('previewArrivalCode').textContent = arrival;
@@ -1284,118 +1231,50 @@ Code').textContent = `${generateRandomCode(6)} (${
                 document.getElementById('previewEmission').textContent = `${emission} kg CO2`;
                 
                 // Update passenger list in preview
-                previewPassengerListureCity').textContent = airports[departure].city;
-                document.getElementById('previewDepartureTime').textContent = departureTime;
-                
-                document.getElementById('previewArrivalCode').textContent = arrival;
-                document.getElementById('previewArrivalCity').textContent = airports[arrival].city;
-                document.getElementById('previewArrivalTime').textContent = arrivalTime;
-                
-                // Calculate distance
-                const distanceKey = `${departure}-${arrival}`;
-                const distance = distances[distanceKey] || 1500;
-                document.getElementById('previewDistance').textContent = `${distance} Miles`;
-                
-                // Set meals based on time
-                const depHour = parseInt(departureTime.split(':')[0]);
-                let meals = 'Snack';
-                if (depHour < 10) meals = 'Breakfast';
-                else if (depHour < 15) meals = 'Lunch';
-                else if (depHour < 20) meals = 'Dinner';
-                document.getElementById('previewMeals').textContent = meals;
-                
-                // Calculate emissions (rough estimate)
-                const emission = (distance * 0.115).toFixed(2);
-                document.getElementById('previewEmission').textContent = `${emission} kg CO2`;
-                
-                // Update passenger list in preview
-                previewPassengerList.innerHTML.innerHTML = '';
-                passengers.forEach(pass = '';
+                previewPassengerList.innerHTML = '';
                 passengers.forEach(passenger => {
-                    const passengerenger => {
-                    const passengerItem = document.createElement('Item = document.createElement('divdiv');
-                    passenger');
+                    const passengerItem = document.createElement('div');
                     passengerItem.className = 'preview-passenger-item';
-                    passengerItem.innerHTML =Item.className = 'preview-passenger-item';
                     passengerItem.innerHTML = `
- `
-                        <span class="passenger-name">${passenger.title.toUpperCase                        <span class="passenger-name">${passenger.title.toUpperCase()} ${passenger.name.toUpperCase()} ${passenger.name.toUpperCase()}</span>
-                       ()}</span>
-                        <span class="passenger-t <span class="passenger-ticket">${passenger.ticket}</icket">${passenger.ticket}</span>
-span>
+                        <span class="passenger-name">${passenger.title.toUpperCase()} ${passenger.name.toUpperCase()}</span>
+                        <span class="passenger-ticket">${passenger.ticket}</span>
                     `;
-                                       `;
-                    previewPassengerList.appendChild(p previewPassengerList.appendChild(passassengerItem);
-                });
-engerItem);
+                    previewPassengerList.appendChild(passengerItem);
                 });
                 
-                               
-                // Update contact details if provided // Update contact details if provided
-                if (customerEmail
-                if (customerEmail || customer || customerMobile) {
-                    ifMobile) {
-                    if ( (customerEmail) {
-                       customerEmail) {
+                // Update contact details if provided
+                if (customerEmail || customerMobile) {
+                    if (customerEmail) {
                         document.getElementById('previewCustomerEmail').textContent = customerEmail;
-                    document.getElementById('previewCustomerEmail').textContent = customerEmail;
                     } else {
-                        document.getElementById } else {
-                        document.getElementById('('previewCustomerEmail').previewCustomerEmail').textContenttextContent = 'Not provided';
-                    = 'Not provided';
+                        document.getElementById('previewCustomerEmail').textContent = 'Not provided';
                     }
                     
-                    if (customer }
-                    
-                    if (customerMobileMobile) {
-                        document.getElementById(') {
-                        document.getElementById('prepreviewCustomerMobile').textContent = customerMobile;
-                    }viewCustomerMobile').textContent = customerMobile;
+                    if (customerMobile) {
+                        document.getElementById('previewCustomerMobile').textContent = customerMobile;
                     } else {
-                        document else {
-                        document.getElementById('pre.getElementById('previewCustomerMobileviewCustomerMobile').textContent =').textContent = 'Not provided';
- 'Not provided';
-                    }
+                        document.getElementById('previewCustomerMobile').textContent = 'Not provided';
                     }
                     
-                    previewContact                    
-                    previewContactDetails.style.display =Details.style.display = 'block';
- 'block';
-                } else                } else {
-                    previewContact {
-                    previewContactDetails.style.displayDetails.style.display = 'none = 'none';
+                    previewContactDetails.style.display = 'block';
+                } else {
+                    previewContactDetails.style.display = 'none';
                 }
                 
-';
-                }
-                
-                // Show                // Show preview
-                preview
-                itineraryPreview.style.display itineraryPreview.style.display = 'block';
- = 'block';
-                itinerary                itineraryPreview.scrollIntoPreview.scrollIntoView({ behavior:View({ behavior: 'smooth 'smooth' });
-           ' });
+                // Show preview
+                itineraryPreview.style.display = 'block';
+                itineraryPreview.scrollIntoView({ behavior: 'smooth' });
             });
-            
-            // });
             
             // Print itinerary
- Print itinerary
-            printBtn            printBtn.addEventListener('click',.addEventListener('click', function() {
-                function() {
-                window.print window.print();
+            printBtn.addEventListener('click', function() {
+                window.print();
             });
             
-();
-            });
-            
-            // Edit details            // Edit details
-           
-            editBtn.addEventListener(' editBtn.addEventListener('click', function()click', function() {
-                {
-                itineraryPreview.style.display itineraryPreview.style.display = = 'none';
-                document 'none';
-                document.getElementById('flightForm.getElementById('flightForm').scrollIntoView({ behavior: 'smooth' });
+            // Edit details
+            editBtn.addEventListener('click', function() {
+                itineraryPreview.style.display = 'none';
+                document.getElementById('flightForm').scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
