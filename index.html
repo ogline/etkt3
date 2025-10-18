@@ -263,8 +263,6 @@
         }
         
         .passenger-details {
-            display: flex;
-            justify-content: space-between;
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px dashed #ddd;
@@ -348,6 +346,10 @@
         }
         
         .passenger-name {
+            flex: 2;
+        }
+        
+        .passenger-ticket {
             flex: 1;
         }
         
@@ -373,6 +375,42 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
+        }
+        
+        .passenger-columns {
+            display: flex;
+            margin-bottom: 10px;
+            font-weight: bold;
+            padding: 0 10px;
+        }
+        
+        .passenger-column-title {
+            width: 80px;
+        }
+        
+        .passenger-column-name {
+            flex: 2;
+        }
+        
+        .passenger-column-ticket {
+            flex: 1;
+        }
+        
+        .passenger-column-action {
+            width: 30px;
+        }
+        
+        .preview-passenger-list {
+            margin-top: 10px;
+        }
+        
+        .preview-passenger-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding: 8px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
         }
         
         /* Print styles - only show the itinerary */
@@ -406,11 +444,11 @@
                 margin-bottom: 15px;
             }
             
-            .reservation-codes, .airline-info, .flight-info, .passenger-details {
+            .reservation-codes, .airline-info, .flight-info {
                 flex-direction: column;
             }
             
-            .reservation-codes > div, .airline-info > div, .flight-info > div, .passenger-details > div {
+            .reservation-codes > div, .airline-info > div, .flight-info > div {
                 margin-bottom: 10px;
             }
             
@@ -419,8 +457,12 @@
                 align-items: stretch;
             }
             
-            .passenger-title {
+            .passenger-title, .passenger-name, .passenger-ticket {
                 width: 100%;
+            }
+            
+            .passenger-columns {
+                display: none;
             }
         }
     </style>
@@ -542,6 +584,13 @@
                             <button type="button" class="btn btn-add" id="addPassengerBtn">Add Passenger</button>
                         </div>
                         
+                        <div class="passenger-columns">
+                            <div class="passenger-column-title">Title</div>
+                            <div class="passenger-column-name">Passenger Name</div>
+                            <div class="passenger-column-ticket">Ticket Number</div>
+                            <div class="passenger-column-action"></div>
+                        </div>
+                        
                         <div id="passengerContainer">
                             <div class="passenger-entry" data-passenger-id="1">
                                 <select class="passenger-title" required>
@@ -552,20 +601,9 @@
                                     <option value="Mstr">Mstr</option>
                                 </select>
                                 <input type="text" class="passenger-name" placeholder="Enter full name" required>
+                                <input type="text" class="passenger-ticket" placeholder="Ticket number" required>
                                 <button type="button" class="remove-passenger" style="display: none;">×</button>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="ticketNumber">Ticket Number</label>
-                                <input type="text" id="ticketNumber" placeholder="Enter ticket number" required>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <!-- Empty column for alignment -->
                         </div>
                     </div>
                     
@@ -659,17 +697,12 @@
                 </div>
                 
                 <div class="passenger-details">
-                    <div>
-                        <div class="info-label">Passenger Name(s):</div>
-                        <div class="info-value" id="previewPassenger">ANSARI/HINDA AKIF</div>
-                    </div>
-                    <div>
-                        <div class="info-label">Seats:</div>
-                        <div class="info-value">Check-In Required</div>
-                    </div>
-                    <div>
-                        <div class="info-label">eTicket Receipt(s):</div>
-                        <div class="info-value" id="previewTicketNumber">0722999963076</div>
+                    <div class="info-label">Passenger Name(s) & Ticket Numbers:</div>
+                    <div class="preview-passenger-list" id="previewPassengerList">
+                        <div class="preview-passenger-item">
+                            <span class="passenger-name">ANSARI/HINDA AKIF</span>
+                            <span class="passenger-ticket">0722999963076</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -704,6 +737,7 @@
             const companyLogoInput = document.getElementById('companyLogo');
             const companyLogoPreview = document.getElementById('companyLogoPreview');
             const passengerContainer = document.getElementById('passengerContainer');
+            const previewPassengerList = document.getElementById('previewPassengerList');
             
             let uploadedLogo = null;
             let uploadedCompanyLogo = null;
@@ -795,6 +829,7 @@
                         <option value="Mstr">Mstr</option>
                     </select>
                     <input type="text" class="passenger-name" placeholder="Enter full name" required>
+                    <input type="text" class="passenger-ticket" placeholder="Ticket number" required>
                     <button type="button" class="remove-passenger">×</button>
                 `;
                 
@@ -868,6 +903,7 @@
                             <option value="Mstr">Mstr</option>
                         </select>
                         <input type="text" class="passenger-name" placeholder="Enter full name" required>
+                        <input type="text" class="passenger-ticket" placeholder="Ticket number" required>
                         <button type="button" class="remove-passenger" style="display: none;">×</button>
                     </div>
                 `;
@@ -921,7 +957,6 @@
                 const departureTime = document.getElementById('departureTime').value;
                 const arrivalDate = document.getElementById('arrivalDate').value;
                 const arrivalTime = document.getElementById('arrivalTime').value;
-                const ticketNumber = document.getElementById('ticketNumber').value;
                 
                 // Get passenger details
                 const passengerEntries = document.querySelectorAll('.passenger-entry');
@@ -930,17 +965,18 @@
                 for (let entry of passengerEntries) {
                     const title = entry.querySelector('.passenger-title').value;
                     const name = entry.querySelector('.passenger-name').value;
+                    const ticket = entry.querySelector('.passenger-ticket').value;
                     
-                    if (!title || !name) {
+                    if (!title || !name || !ticket) {
                         alert('Please fill in all passenger details');
                         return;
                     }
                     
-                    passengers.push({ title, name });
+                    passengers.push({ title, name, ticket });
                 }
                 
                 // Validate form
-                if (!departure || !arrival || !airline || !flightNumber || !departureDate || !departureTime || !arrivalDate || !arrivalTime || !ticketNumber) {
+                if (!departure || !arrival || !airline || !flightNumber || !departureDate || !departureTime || !arrivalDate || !arrivalTime) {
                     alert('Please fill in all required fields');
                     return;
                 }
@@ -951,7 +987,6 @@
                 // Update preview
                 document.getElementById('previewTripTitle').textContent = `TRIP TO ${airports[arrival].city}`;
                 document.getElementById('previewPassengerName').textContent = passengerNames.toUpperCase();
-                document.getElementById('previewPassenger').textContent = passengerNames.toUpperCase();
                 
                 document.getElementById('previewReservationCode').textContent = generateRandomCode(6);
                 document.getElementById('previewAirlineCode').textContent = `${generateRandomCode(6)} (${airline})`;
@@ -1013,7 +1048,17 @@
                 const emission = (distance * 0.115).toFixed(2);
                 document.getElementById('previewEmission').textContent = `${emission} kg CO2`;
                 
-                document.getElementById('previewTicketNumber').textContent = ticketNumber;
+                // Update passenger list in preview
+                previewPassengerList.innerHTML = '';
+                passengers.forEach(passenger => {
+                    const passengerItem = document.createElement('div');
+                    passengerItem.className = 'preview-passenger-item';
+                    passengerItem.innerHTML = `
+                        <span class="passenger-name">${passenger.title.toUpperCase()} ${passenger.name.toUpperCase()}</span>
+                        <span class="passenger-ticket">${passenger.ticket}</span>
+                    `;
+                    previewPassengerList.appendChild(passengerItem);
+                });
                 
                 // Show preview
                 itineraryPreview.style.display = 'block';
